@@ -22,14 +22,14 @@ const CamioneroxCamion = sequelize.define('CamioneroxCamion', {
     dominioCamion: {
       type: DataTypes.STRING,
       allowNull: false,
-      eferences: {
+      references: {
         model: 'camiones', 
         key: 'dominio'
       }
     }
   }, {
     tableName: 'camionerosxcamiones',
-    timestamps: false
+    timestamps: false,
   });
 
   export default CamioneroxCamion;

@@ -6,7 +6,8 @@ import Camionero from './Camionero.js';
 import Camion from './Camion.js';
 import Paquete from './Paquete.js';
 import Provincia from './Provincia.js';
-import CamioneroxCamion from "./CamioneroxCamion.js";
+import CamioneroxCamion from './CamioneroxCamion.js';
+      
 
 // --- Definir Asociaciones ---
 
@@ -43,6 +44,27 @@ Camionero.hasMany(Paquete, {
     otherKey: 'cuilCamionero',
     unique: false
   });
+
+  // Asociaciones inversas para el include en la tabla intermedia 
+  //Estas líneas crean la asociación directa desde la tabla intermedia hacia los modelos, que es lo que Sequelize necesita para resolver los include.
+  CamioneroxCamion.belongsTo(Camionero, {
+    foreignKey: 'cuilCamionero',
+  });
+
+  CamioneroxCamion.belongsTo(Camion, {
+    foreignKey: 'dominioCamion',
+  });
+
+  //Otra forma de hacer la relación Camionero N:M Camion 
+
+  // // Camionero N:M Camion   
+  // Camionero.belongsToMany(Camion, {
+  //   through: CamioneroxCamion
+  // });
+
+  // Camion.belongsToMany(Camionero, {
+  //   through: CamioneroxCamion
+  // });
 
 // Exporta la instancia de sequelize y todos los modelos usando named exports
 export {

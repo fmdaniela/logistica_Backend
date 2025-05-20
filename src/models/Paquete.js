@@ -37,7 +37,7 @@ const Paquete = sequelize.define('Paquete', {
     }
   }, {
     tableName: 'paquetes',
-    timestamps: false
+    timestamps: false,
   });
 
 export default Paquete;

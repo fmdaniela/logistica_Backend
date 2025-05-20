@@ -21,7 +21,7 @@ const Provincia = sequelize.define('Provincia', {
         },
   }, {
     tableName: 'provincias',
-    timestamps: false
+    timestamps: false,
   });
 
 export default Provincia;

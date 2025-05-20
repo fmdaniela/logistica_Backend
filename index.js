@@ -1,7 +1,6 @@
-// index.js (en la raíz del proyecto) - Versión Actualizada
 import express from 'express';
-// Importa desde el index de modelos (nota el /index.js)
-import { sequelize, Camionero, Camion, Paquete, Provincia, CamioneroxCamion } from './src/models/index.js';
+import { sequelize } from './src/models/index.js'; // No hace falta importar los modelos uno por uno
+import apiRoutes from './src/routes/index.js'; // Importa el index de rutas agrupadas
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,28 +11,8 @@ app.get('/', (req, res) => {
   res.send('¡Backend funcionando!');
 });
 
-// --- AQUÍ IRÍAN TUS RUTAS API ---
-// Obtenemos todos los camioneros
-app.get('/camioneros', async (req, res) => {
-    try {
-        const camioneros = await Camionero.findAll();
-        res.json(camioneros);
-    } catch (error) {
-        res.status(500).json({ error: 'Error al obtener camioneros' });
-    }
-});
-
-// Obtenemos todos los camiones
-app.get('/camiones', async (req, res) => {
-  try {
-    const camiones = await Camion.findAll();
-    res.json(camiones);
-  } catch (error) {
-    res.status(500).json({ error: 'Error al obtener camiones' });
-  }
-});
-// ... Define más rutas ...
-
+// Montar todas las rutas agrupadas bajo /api
+app.use('/api', apiRoutes);
 
 // Iniciar servidor y sincronizar DB
 async function startServer() {

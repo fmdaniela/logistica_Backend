@@ -25,7 +25,7 @@ const Camionero = sequelize.define('Camionero', {
     }
   }, {
     tableName: 'camioneros',
-    timestamps: false
+    timestamps: false,
   });
 
 export default Camionero;
