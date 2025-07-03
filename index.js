@@ -1,6 +1,6 @@
 import express from 'express';
 import { sequelize } from './src/models/index.js'; // No hace falta importar los modelos uno por uno
-import apiRoutes from './src/routes/index.js'; // Importa el index de rutas agrupadas
+import apiRoutes from './src/routes/index.js'; // Importa el index de rutas agrupadas que centraliza todas las rutas en un solo archivo
 
 const app = express();
 const PORT = process.env.PORT || 3000;
